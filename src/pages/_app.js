@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
           <div className="mb-8">
             <Navbar/>
           </div>
-       xx
+        
           <main className="flex-grow ">
             <Component {...pageProps} />
           </main>

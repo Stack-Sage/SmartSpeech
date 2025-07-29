@@ -42,7 +42,7 @@ export default function ResultPage() {
       >
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-extrabold text-zinc-800 dark:text-white tracking-tight">
-            Your Test Results 705
+            Your Test Results 705
           </h1>
           <p className="text-zinc-500 dark:text-zinc-400">
             Review your performance and insights. You can download your results below.
