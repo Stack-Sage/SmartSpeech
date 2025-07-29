@@ -1,4 +1,6 @@
+
 import StudyCard from '@/components/StudyCard';
+import { motion } from '@/components/motion';
 
 const lessons = [
   {
@@ -20,24 +22,31 @@ const lessons = [
 
 export default function StudyPlanPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-teal-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 max-w-6xl mx-auto py-10 px-4 space-y-8 transition-colors duration-500">
-      <h1 className="text-3xl font-bold text-center text-zinc-800 dark:text-white">
-        Your Personalized Study Plan 🎯
-      </h1>
-      <p className="text-center text-zinc-500 dark:text-zinc-400 mb-6">
-        Based on your progress and score trends, here are lessons curated just for you.
-      </p>
+    <div className="min-h-screen w-full bg-gradient-to-br from-white via-blue-50 to-teal-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 py-10 px-4 space-y-8 transition-colors duration-500">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="max-w-6xl mx-auto"
+      >
+        <h1 className="text-3xl font-bold text-center text-zinc-800 dark:text-white">
+          Your Personalized Study Plan 🎯
+        </h1>
+        <p className="text-center text-zinc-500 dark:text-zinc-400 mb-6">
+          Based on your progress and score trends, here are lessons curated just for you.
+        </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {lessons.map((lesson, index) => (
-          <StudyCard
-            key={index}
-            title={lesson.title}
-            description={lesson.description}
-            imageUrl={lesson.imageUrl}
-          />
-        ))}
-      </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {lessons.map((lesson, index) => (
+            <StudyCard
+              key={index}
+              title={lesson.title}
+              description={lesson.description}
+              imageUrl={lesson.imageUrl}
+            />
+          ))}
+        </div>
+      </motion.div>
     </div>
   );
 }

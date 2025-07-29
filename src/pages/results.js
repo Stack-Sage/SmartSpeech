@@ -29,26 +29,38 @@ const handleDownload = () => {
   URL.revokeObjectURL(url);
 };
 
+import { motion } from '@/components/motion';
+
 export default function ResultPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-teal-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 max-w-6xl mx-auto py-10 px-4 space-y-10 transition-colors duration-500">
-      <div className="text-center space-y-4">
-        <h1 className="text-4xl font-extrabold text-zinc-800 dark:text-white tracking-tight">
-          Your Test Results ✅
-        </h1>
-        <p className="text-zinc-500 dark:text-zinc-400">
-          Review your performance and insights. You can download your results below.
-        </p>
-
-        <button
-          onClick={handleDownload}
-          className="mt-4 px-5 py-2 bg-emerald-600 text-white font-medium rounded hover:bg-emerald-700 transition"
-        >
-          Download Results
-        </button>
-      </div>
-
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="min-h-screen w-full bg-gradient-to-br from-white via-blue-50 to-teal-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 py-10 px-4 space-y-10 transition-colors duration-500">
+      <motion.div
+        className="max-w-4xl mx-auto mb-8 backdrop-blur-lg bg-white/70 dark:bg-gray-900/80 rounded-2xl shadow-xl p-8"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+      >
+        <div className="text-center space-y-4">
+          <h1 className="text-4xl font-extrabold text-zinc-800 dark:text-white tracking-tight">
+            Your Test Results 705
+          </h1>
+          <p className="text-zinc-500 dark:text-zinc-400">
+            Review your performance and insights. You can download your results below.
+          </p>
+          <button
+            onClick={handleDownload}
+            className="mt-4 px-5 py-2 bg-emerald-600 text-white font-medium rounded hover:bg-emerald-700 transition"
+          >
+            Download Results
+          </button>
+        </div>
+      </motion.div>
+      <motion.div
+        className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.2 }}
+      >
         {mockResults.map((result) => (
           <ResultCard
             key={result.id}
@@ -58,7 +70,7 @@ export default function ResultPage() {
             icon={result.icon}
           />
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }

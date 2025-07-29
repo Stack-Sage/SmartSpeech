@@ -1,7 +1,19 @@
 'use client'
-import { useState, useEffect, useRef } from 'react';
 
-export default function QuestionCard({ prompt, duration }) {
+import { motion } from './motion';
+import { useState, useRef, useEffect } from 'react';
+
+function SkeletonQuestionCard() {
+  return (
+    <div className="animate-pulse ring-2 ring-amber-200/60 dark:ring-teal-400/30 rounded-2xl p-8 space-y-5 bg-gradient-to-br from-beige-50 via-amber-50 to-neutral-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-xl border border-amber-100 dark:border-gray-800 transition-all duration-300">
+      <div className="h-6 w-40 bg-amber-100 dark:bg-teal-900 rounded" />
+      <div className="h-4 w-24 bg-gray-300 dark:bg-gray-700 rounded" />
+      <div className="h-8 w-full bg-gray-200 dark:bg-gray-800 rounded" />
+    </div>
+  );
+}
+
+export default function QuestionCard({ prompt, duration, loading = false }) {
   const [timeLeft, setTimeLeft] = useState(duration);
   const [recording, setRecording] = useState(false);
   const [mediaRecorder, setMediaRecorder] = useState(null);
@@ -50,8 +62,18 @@ export default function QuestionCard({ prompt, duration }) {
     setTimeLeft(duration);
   };
 
+  if (loading) return <SkeletonQuestionCard />;
+
   return (
-    <div className="ring-2 ring-amber-200/60 dark:ring-teal-400/30 rounded-2xl p-8 space-y-5 bg-gradient-to-br from-beige-50 via-amber-50 to-neutral-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-xl border border-amber-100 dark:border-gray-800 transition-all duration-300">
+    <motion.div
+      className="ring-2 ring-amber-200/60 dark:ring-teal-400/30 rounded-2xl p-8 space-y-5 bg-gradient-to-br from-beige-50 via-amber-50 to-neutral-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-xl border border-amber-100 dark:border-gray-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-amber-400"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      whileTap={{ scale: 0.97 }}
+      tabIndex={0}
+      aria-label={`Question: ${prompt}`}
+    >
       <p className="text-xl font-semibold text-amber-900 dark:text-zinc-100">{prompt}</p>
 
       <div className="text-center text-base text-neutral-700 dark:text-zinc-300 font-medium">
@@ -59,16 +81,18 @@ export default function QuestionCard({ prompt, duration }) {
       </div>
 
       {!recording && (
-        <button
+        <motion.button
           onClick={startRecording}
           className="px-5 py-2 bg-gradient-to-r from-blue-500 to-teal-400 hover:from-blue-600 hover:to-teal-500 text-white font-semibold rounded-lg shadow transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 dark:focus:ring-teal-400"
+          whileTap={{ scale: 0.95 }}
+          aria-label={recording ? 'Recording in progress' : 'Start recording'}
         >
           Start Recording
-        </button>
+        </motion.button>
       )}
 
       {audioURL && (
-        <audio controls src={audioURL} className="mt-4 w-full rounded-lg shadow" />
+        <audio controls src={audioURL} className="mt-4 w-full rounded-lg shadow" aria-label="Playback recorded answer" />
       )}
 
       {feedback && (
@@ -79,6 +103,6 @@ export default function QuestionCard({ prompt, duration }) {
           <p><span className="font-semibold text-blue-600 dark:text-teal-400">Attempted on:</span> {startTime}</p>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
