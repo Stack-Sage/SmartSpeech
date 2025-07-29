@@ -18,7 +18,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto py-10 px-4 space-y-12">
+    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-teal-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 max-w-6xl mx-auto py-10 px-4 space-y-12 transition-colors duration-500">
       {/* Greeting */}
       <div className="text-center">
         <h1 className="text-4xl font-extrabold text-zinc-800 dark:text-white">

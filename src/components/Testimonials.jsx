@@ -23,17 +23,17 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="py-16 px-6 md:px-20 bg-gray-50 dark:bg-gray-950">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+    <section className="py-20 px-6 md:px-24 bg-gradient-to-br from-blue-50 via-white to-teal-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800">
+      <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-14 text-gray-900 dark:text-white drop-shadow-lg">
         Trusted by Learners Worldwide
       </h2>
-      <div className="grid md:grid-cols-3 gap-10">
+      <div className="grid md:grid-cols-3 gap-12">
         {testimonials.map((person, index) => (
           <div
             key={index}
-            className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-xl transition duration-300"
+            className="bg-white/90 dark:bg-gray-800/90 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-800"
           >
-            <div className="flex items-center mb-4">
+            <div className="flex items-center mb-6">
               {/* <Image
                 src={person.image}
                 alt={person.name}
@@ -42,13 +42,13 @@ const Testimonials = () => {
                 className="rounded-full"
               /> */}
               <div className="ml-4">
-                <h4 className="text-lg font-semibold text-gray-800 dark:text-white">
+                <h4 className="text-xl font-bold text-gray-800 dark:text-white">
                   {person.name}
                 </h4>
-                <p className="text-sm text-gray-500 dark:text-gray-400">{person.role}</p>
+                <p className="text-base text-gray-500 dark:text-gray-300">{person.role}</p>
               </div>
             </div>
-            <p className="text-gray-600 dark:text-gray-300 italic">
+            <p className="text-gray-600 dark:text-gray-200 italic text-lg">
               “{person.quote}”
             </p>
           </div>

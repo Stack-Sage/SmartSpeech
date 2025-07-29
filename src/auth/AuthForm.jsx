@@ -5,20 +5,20 @@ export default function AuthForm({ mode = "login" }) {
   const [isOtpMode, setIsOtpMode] = useState(false);
 
   return (
-    <form className="space-y-4 max-w-md mx-auto bg-white dark:bg-neutral-900 flex flex-col mt-20  p-6 rounded-xl shadow">
-      <h2 className="text-2xl font-bold text-center text-zinc-800 dark:text-white">
+    <form className="space-y-4 max-w-md mx-auto bg-neutral-900 flex flex-col mt-20  p-6 rounded-xl shadow">
+      <h2 className="text-2xl font-bold text-center text-white">
         {mode === "login" ? "Welcome Back 👋" : "Create Account 🚀"}
       </h2>
 
       <button
         type="button"
         onClick={() => signIn?.("google")}
-        className="auth-button bg-white text-zinc-900 hover:bg-zinc-100"
+        className="auth-button bg-neutral-800 text-white hover:bg-neutral-700"
       >
         Continue with Google
       </button>
 
-      <div className="text-center text-sm text-zinc-500 dark:text-zinc-400">
+      <div className="text-center text-sm text-zinc-400">
         or
       </div>
 

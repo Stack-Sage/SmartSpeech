@@ -51,32 +51,32 @@ export default function QuestionCard({ prompt, duration }) {
   };
 
   return (
-    <div className="ring-2 ring-neutral-700 rounded-xl p-6 space-y-4 bg-white dark:bg-zinc-900 shadow">
-      <p className="text-lg text-zinc-700 dark:text-zinc-100">{prompt}</p>
+    <div className="ring-2 ring-amber-200/60 dark:ring-teal-400/30 rounded-2xl p-8 space-y-5 bg-gradient-to-br from-beige-50 via-amber-50 to-neutral-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-xl border border-amber-100 dark:border-gray-800 transition-all duration-300">
+      <p className="text-xl font-semibold text-amber-900 dark:text-zinc-100">{prompt}</p>
 
-      <div className="text-center text-sm text-zinc-500 dark:text-zinc-400">
-        Time left: {timeLeft}s
+      <div className="text-center text-base text-neutral-700 dark:text-zinc-300 font-medium">
+        Time left: <span className="font-bold text-amber-600 dark:text-teal-400">{timeLeft}s</span>
       </div>
 
       {!recording && (
         <button
           onClick={startRecording}
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          className="px-5 py-2 bg-gradient-to-r from-blue-500 to-teal-400 hover:from-blue-600 hover:to-teal-500 text-white font-semibold rounded-lg shadow transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 dark:focus:ring-teal-400"
         >
           Start Recording
         </button>
       )}
 
       {audioURL && (
-        <audio controls src={audioURL} className="mt-4 w-full" />
+        <audio controls src={audioURL} className="mt-4 w-full rounded-lg shadow" />
       )}
 
       {feedback && (
-        <div className="mt-4 border-t pt-4 text-sm text-zinc-600 dark:text-zinc-300 space-y-2">
-          <p><strong>Score:</strong> {feedback.score}</p>
-          <p><strong>Tips:</strong> {feedback.tips}</p>
-          <p><strong>Transcript:</strong> {feedback.transcript}</p>
-          <p><strong>Attempted on:</strong> {startTime}</p>
+        <div className="mt-6 border-t pt-4 text-base text-zinc-600 dark:text-zinc-200 space-y-2">
+          <p><span className="font-semibold text-blue-600 dark:text-teal-400">Score:</span> {feedback.score}</p>
+          <p><span className="font-semibold text-blue-600 dark:text-teal-400">Tips:</span> {feedback.tips}</p>
+          <p><span className="font-semibold text-blue-600 dark:text-teal-400">Transcript:</span> {feedback.transcript}</p>
+          <p><span className="font-semibold text-blue-600 dark:text-teal-400">Attempted on:</span> {startTime}</p>
         </div>
       )}
     </div>

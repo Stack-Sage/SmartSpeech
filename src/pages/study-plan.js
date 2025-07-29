@@ -20,7 +20,7 @@ const lessons = [
 
 export default function StudyPlanPage() {
   return (
-    <div className="max-w-6xl mx-auto py-10 px-4 space-y-8">
+    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-teal-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 max-w-6xl mx-auto py-10 px-4 space-y-8 transition-colors duration-500">
       <h1 className="text-3xl font-bold text-center text-zinc-800 dark:text-white">
         Your Personalized Study Plan 🎯
       </h1>

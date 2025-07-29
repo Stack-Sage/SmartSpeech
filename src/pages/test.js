@@ -25,12 +25,12 @@ const mockQuestions = [
 export default function TestPage() {
   const router = useRouter();
 
-  const handleFinishTest = () => {
+  const handleFinishTest = () => { 
     router.push('/results');
   };
 
   return (
-    <div className="max-w-5xl mx-auto py-10 px-4 space-y-10">
+    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-teal-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 max-w-5xl mx-auto py-10 px-4 space-y-10 transition-colors duration-500">
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-extrabold text-zinc-800 dark:text-white tracking-tight">
           Speaking Test 🧠
