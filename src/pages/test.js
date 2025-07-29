@@ -1,4 +1,5 @@
 import QuestionCard from '@/components/QuestionCard';
+import { useRouter } from 'next/router';
 
 const mockQuestions = [
   {
@@ -22,16 +23,24 @@ const mockQuestions = [
 ];
 
 export default function TestPage() {
-  return (
-    <div className="max-w-5xl mx-auto py-10 px-4 space-y-8">
-      <h1 className="text-3xl font-bold text-center text-zinc-800 dark:text-white">
-        Speaking Test 🗣️
-      </h1>
-      <p className="text-center text-zinc-500 dark:text-zinc-400 mb-6">
-        Answer the questions below. Try to speak clearly and within the time limit.
-      </p>
+  const router = useRouter();
 
-      <div className="space-y-6">
+  const handleFinishTest = () => {
+    router.push('/results');
+  };
+
+  return (
+    <div className="max-w-5xl mx-auto py-10 px-4 space-y-10">
+      <div className="text-center space-y-4">
+        <h1 className="text-4xl font-extrabold text-zinc-800 dark:text-white tracking-tight">
+          Speaking Test 🧠
+        </h1>
+        <p className="text-zinc-500 dark:text-zinc-400">
+          Speak clearly and confidently. Each question has a time limit.
+        </p>
+      </div>
+
+      <div className="space-y-8">
         {mockQuestions.map((q) => (
           <QuestionCard
             key={q.id}
@@ -39,6 +48,15 @@ export default function TestPage() {
             duration={q.duration}
           />
         ))}
+      </div>
+
+      <div className="flex justify-center pt-4">
+        <button
+          onClick={handleFinishTest}
+          className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition"
+        >
+          Finish Test & View Results
+        </button>
       </div>
     </div>
   );
